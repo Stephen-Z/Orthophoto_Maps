@@ -12,6 +12,7 @@ if __name__ == '__main__':
     sensor_width = 6.3  # unit: mm
 
     for root, dirs, files in os.walk('./Data'):
+        files.sort()
         for file in files:
             image_start_time = time.time()
             start_time = time.time()
@@ -47,7 +48,7 @@ if __name__ == '__main__':
                 print('Read EOP - ' + file)
                 print('Latitude | Longitude | Height | Omega | Phi | Kappa')
                 eo = readEO(file_path)
-                eo = geographic2plane(eo)
+                eo = geographic2plane(eo, 4326)
                 R = Rot3D(eo)
 
                 # 4. Extract a projected boundary of the image
