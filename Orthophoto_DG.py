@@ -14,16 +14,17 @@ if __name__ == '__main__':
     # sensor_width = 6.3  # unit: mm, Mavic
     # sensor_width = 13.2  # unit: mm, P4RTK
     sensor_width = 17.3  # unit: mm, Inspire
-    epsg = 5186     # editable
+    # epsg = 5186     # editable
+    epsg = 4326     # editable
 
-    for root, dirs, files in os.walk('../00_data/sample_dji'):
+    for root, dirs, files in os.walk('/winshare/temp/TestOrthographyPhotos'):
         for file in files:
             image_start_time = time.time()
 
             filename = os.path.splitext(file)[0]
             extension = os.path.splitext(file)[1]
             file_path = root + '/' + file
-            dst = './' + filename
+            dst = './result/' + filename
 
             if extension == '.JPG' or extension == '.jpg':
                 print('Read the image - ' + file)
